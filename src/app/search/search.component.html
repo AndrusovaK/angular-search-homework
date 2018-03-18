@@ -1,0 +1,29 @@
+<label class="filter-wrapper">
+  <input type="text"
+         class="filter-input form-control"
+         [formControl]="queryInput"
+         placeholder="Search cocktail recipe">
+</label>
+
+<div class="filter-results">
+  <ul class="filter-results__list row" *ngIf="!isLoading">
+    <app-search-result-item
+      class="filter-results__item col-12 col-sm-6 col-md-4 col-lg-3"
+      *ngFor="let cocktail of cocktailsList"
+      [cocktail]="cocktail">
+    </app-search-result-item>
+  </ul>
+
+  <div class="row" *ngIf="isLoading">
+    <div class="col-2 offset-5 cssload-jumping">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="emptyResult">
+    <div class="col-12">
+      <p>No results found =(</p>
+    </div>
+  </div>
+
+</div>
